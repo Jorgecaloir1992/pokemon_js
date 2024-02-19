@@ -1,0 +1,28 @@
+.pokemon-card {
+    width: 200px;
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  .pokemon-card:hover {
+    cursor: pointer;
+  }
+  
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .pokemon-details {
+    width: 100%;
+  }
+  
+  .pokemon-resumen {
+    background-color: #f2f2f2;
+  }
+  
+  .pokemon-resumen .card-body {
+    padding: 20px;
+  }
+  
