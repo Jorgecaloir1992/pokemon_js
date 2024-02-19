@@ -1,61 +1,79 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-  <head>
-    <title>Pokémon App</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="container" ng-controller="ListController">
-      <div class="row">
-        <div class="col-lg-6">
-          <input type="text" class="form-control mb-3" placeholder="Buscar pokémon" ng-model="searchText"
-            ng-keyup="filterPokemon()">
-          <div class="card-deck">
-            <div class="card pokemon-card" ng-repeat="pokemon in filteredPokemon" ng-click="selectPokemon(pokemon)">
-              <div class="card-body">
-                <h5 class="card-title">{{ pokemon.name }}</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div ng-if="selectedPokemon" class="card pokemon-details mb-3">
-            <div class="card-body">
-              <h3 class="card-title">{{ selectedPokemon.name }}</h3>
-              <p class="card-text"><strong>Peso:</strong> {{ selectedPokemon.weight }} kg</p>
-              <p class="card-text"><strong>Altura:</strong> {{ selectedPokemon.height }} m</p>
-              <p class="card-text"><strong>Hablidades:</strong></p>
-              <ul class="list-unstyled">
-                <li ng-repeat="ability in selectedPokemon.abilities">
-                  {{ ability.ability.name }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="card pokemon-resumen">
-            <div class="card-body">
-              <h3 class="card-title">Tabla de letras</h3>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Letra</th>
-                    <th>Cantidad</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="letter in alphabet">
-                    <td>{{ letter }}</td>
-                    <td>{{ getPokemonCountByLetter(letter) }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <script src="app.js"></script> 
-  </body>
+
+<head>
+	<title>Pokémon App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<header>
+		<div class="row">
+			<div class="col-xs-12 text-center mb-3"> 
+				<img src="../src/assets/img/pokemon.jpg" alt="Logo de Pokémon" class="center-block">
+			</div>
+		</div>
+	</header>
+	<div class="container" ng-controller="ListController">
+		<div class="row mt-3 mb-3 justify-content-center">
+			<div class="col-xs-12 col-sm-6">
+				<input type="text" class="form-control" placeholder="Buscar pokémon" ng-model="searchText"
+					ng-keyup="filterPokemon()">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-body">
+						<div class="card-deck">
+							<div class="card pokemon-card" ng-repeat="pokemon in filteredPokemon" ng-click="selectPokemon(pokemon)">
+								<div class="card-body">
+									<h5 class="card-title">{{ pokemon.name }}</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div ng-if="selectedPokemon" class="card mb-3">
+					<div class="card-body">
+						<h3 class="card-title">{{ selectedPokemon.name }}</h3>
+						<p class="card-text"><strong>Peso:</strong> {{ selectedPokemon.weight }} kg</p>
+						<p class="card-text"><strong>Altura:</strong> {{ selectedPokemon.height }} m</p>
+						<p class="card-text"><strong>Habilidades:</strong></p>
+						<ul class="list-unstyled">
+							<li ng-repeat="ability in selectedPokemon.abilities">
+								{{ ability.ability.name }}
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="card mb-3">
+					<div class="card-body">
+						<h3 class="card-title">Tabla de letras</h3>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Letra</th>
+									<th>Cantidad</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="letter in alphabet">
+									<td>{{ letter }}</td>
+									<td>{{ getPokemonCountByLetter(letter) }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+
 </html>
